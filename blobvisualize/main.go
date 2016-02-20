@@ -5,13 +5,14 @@
 package main
 
 import (
-	"git.encryptio.com/blobdetect"
+	"fmt"
 	"image"
 	_ "image/png"
-	"os"
-	"fmt"
-	"math/rand"
 	"log"
+	"math/rand"
+	"os"
+
+	"github.com/encryptio/blobdetect"
 )
 
 func randomSVGColor() string {
@@ -20,26 +21,34 @@ func randomSVGColor() string {
 	b := rand.Float64()
 
 	min := r
-	if min > g { min = g }
-	if min > b { min = b }
+	if min > g {
+		min = g
+	}
+	if min > b {
+		min = b
+	}
 
 	r -= min
 	g -= min
 	b -= min
 
 	max := r
-	if max < g { max = g }
-	if max < b { max = b }
+	if max < g {
+		max = g
+	}
+	if max < b {
+		max = b
+	}
 
 	r /= max
 	g /= max
 	b /= max
 
-	ri := byte(r*255)
-	gi := byte(g*255)
-	bi := byte(b*255)
+	ri := byte(r * 255)
+	gi := byte(g * 255)
+	bi := byte(b * 255)
 
-	return fmt.Sprintf("#%x", []byte{ri,gi,bi})
+	return fmt.Sprintf("#%x", []byte{ri, gi, bi})
 }
 
 func main() {
