@@ -33,10 +33,10 @@ func convertToGray(i image.Image) *image.Gray {
 }
 
 // Detect calculates the list of connected blobs in the image, defined as
-// 4-connected blobs of non-zero value in an image.Gray. (The image given
-// is converted to an image.Gray if it is not one already.)
+// 4-connected blobs of non-zero value in an image.Gray. The image given
+// is converted to an image.Gray if it is not one already.
 //
-// If given its second argument, it will reuse the memory in the slice for
+// If given a non-nil slice in its second argument, it will reuse that slice for
 // its return value (if possible) and thus, in the common case, cause zero
 // allocations.
 func Detect(source image.Image, out []Blob) []Blob {
